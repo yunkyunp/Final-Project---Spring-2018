@@ -19,7 +19,7 @@ BCBL-1 is a Primary Effusion Lymphoma cell line, infected with Kaposi's Sarcoma-
 1. Trim bases on both ends and Pre-alignment QA/QC. 
 2. Align reads and Post-alignment QA/QC: used default settings and used Bowtie2 and aligned to hg19 (human genome)
 
-### Creating a "Tag Directory" (Homer)
+### Creating a "Tag Directory" (HOMER)
 Tag directory is  platform independent sequence alignment representing the experiment, analogous to loading the data into a database.  It is essentially a directory on your computer that contains several files describing your experiment. 
 HOMER guesses input format, but I used '-force bam'
 
@@ -29,7 +29,7 @@ HOMER guesses input format, but I used '-force bam'
 makeTagDirectory <Output Directory Name> [options] <alignment file1> [alignment file 2] ...
 ```
 
-### Fined "enriched peaks" (Homer)
+### Fined "enriched peaks" (HOMER)
 Use either '-style factor' or '-style histone' depending on what type of ChIP-seq it is.
 This step will normalize to 10 million reads.
 
