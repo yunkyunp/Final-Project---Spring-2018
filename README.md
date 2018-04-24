@@ -12,8 +12,8 @@ BCBL-1 is a Primary Effusion Lymphoma cell line, infected with Kaposi's Sarcoma-
 
 ### Papers useful for my project
 1. [Epstein-Barr virus oncoprotein super-enhancers control B cell growth](https://www.ncbi.nlm.nih.gov/pubmed/25639793) 
-2. [PEpstein-Barr virus super-enhancer eRNAs are essential for MYC oncogene expression and lymphoblast proliferation](https://www.ncbi.nlm.nih.gov/pubmed/27864512)    
-3. [a database of super-enhancers in mouse and human genome](http://asntech.org/dbsuper/)
+2. [Epstein-Barr virus super-enhancer eRNAs are essential for MYC oncogene expression and lymphoblast proliferation](https://www.ncbi.nlm.nih.gov/pubmed/27864512)    
+3. [A database of super-enhancers in mouse and human genome](http://asntech.org/dbsuper/)
 
 ### Pre-analysis (Partek Flow) 
 1. Trim bases on both ends and Pre-alignment QA/QC. 
@@ -21,15 +21,27 @@ BCBL-1 is a Primary Effusion Lymphoma cell line, infected with Kaposi's Sarcoma-
 
 ### Creating a "Tag Directory" (Homer)
 Tag directory is  platform independent sequence alignment representing the experiment, analogous to loading the data into a database.  It is essentially a directory on your computer that contains several files describing your experiment. 
-HOMER guesses input format, but I used "-force bam"
+HOMER guesses input format, but I used '-force bam'
 
-[Next-gen Sequencing Analysis: Creating a "Tag Directory" with makeTagDirectory](http://homer.ucsd.edu/homer/ngs/tagDir.html) 
+[HOMER: Creating a "Tag Directory" with makeTagDirectory](http://homer.ucsd.edu/homer/ngs/tagDir.html) 
 
 ```bash
- 
+makeTagDirectory <Output Directory Name> [options] <alignment file1> [alignment file 2] ...
 ```
 
 ### Fined "enriched peaks" (Homer)
+Use either '-style factor' or '-style histone' depending on what type of ChIP-seq it is.
+This step will normalize to 10 million reads.
 
-[Finding Enriched Peaks, Regions, and Transcripts](http://homer.ucsd.edu/homer/ngs/peaks.html) 
+[HOMER: Finding Enriched Peaks, Regions, and Transcripts](http://homer.ucsd.edu/homer/ngs/peaks.html) 
 
+```bash
+findPeaks <tag directory> -style <factor or histone> -o Sample_Peaks.txt -i <input tag directory>
+```
+
+### Annotate peaks (HOMER)
+Annotated peaks come in '.txt' file. Default settings are used, and use 'hg19' for genome.
+
+```bash
+annotatePeaks.pl Sample_Peaks.txt hg19 >Sample_Peaks_annotated.txt
+```
