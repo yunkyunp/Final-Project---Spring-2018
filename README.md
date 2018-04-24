@@ -23,11 +23,11 @@ H3K4me1 and H3K27ac are the predominant histone modifications deposited at nucle
 1. Trim bases on both ends and Pre-alignment QA/QC. 
 2. Align reads and Post-alignment QA/QC: used default settings and used Bowtie2 and aligned to hg19 (human genome)
 
-Output from Partek Flow: "FILE NAMES AND LOCATIONS"
+Output from Partek Flow: `FILE NAMES AND LOCATIONS`
 
 ### Creating a "Tag Directory" (HOMER)
 Tag directory is  platform independent sequence alignment representing the experiment, analogous to loading the data into a database.  It is essentially a directory on your computer that contains several files describing your experiment. 
-HOMER guesses input format, but I used '-force bam'
+HOMER guesses input format, but I used `-force bam`
 
 [HOMER: Creating a "Tag Directory" with makeTagDirectory](http://homer.ucsd.edu/homer/ngs/tagDir.html) 
 
@@ -37,7 +37,7 @@ makeTagDirectory <Output Directory Name> [options] <alignment file1> [alignment 
 Output: 
 
 ### Fined "enriched peaks" (HOMER)
-Use either '-style factor' or '-style histone' depending on what type of ChIP-seq it is.
+Use either `-style factor` or '-style histone' depending on what type of ChIP-seq it is.
 This step will normalize to 10 million reads.
 
 [HOMER: Finding Enriched Peaks, Regions, and Transcripts](http://homer.ucsd.edu/homer/ngs/peaks.html) 
@@ -49,7 +49,7 @@ findPeaks <tag directory> -style <factor or histone> -o Sample_Peaks.txt -i <inp
 Output:
 
 ### Annotate peaks (HOMER)
-Annotated peaks come in '.txt' file. Default settings are used, and use 'hg19' for genome.
+Annotated peaks come in `.txt` file. Default settings are used, and use 'hg19' for genome.
 
 [HOMER: Annotating Regions in the Genome (annotatePeaks.pl)](http://homer.ucsd.edu/homer/ngs/annotation.html)
 
@@ -57,8 +57,8 @@ Annotated peaks come in '.txt' file. Default settings are used, and use 'hg19' f
 annotatePeaks.pl Sample_Peaks.txt hg19 >Sample_Peaks_annotated.txt
 ```
 
-Output: '.txt' (take a screenshot of the .txt file)
+Output: `.txt` (take a screenshot of the .txt file)
 
-H3K27ac is enriched in both active promoters and enhancers. Identify active enhancers by taking out the 'Promoter/TSS' from the '.txt' file.
+H3K27ac is enriched in both active promoters and enhancers. Identify active enhancers by taking out the `Promoter/TSS` from the `.txt` file.
 
 ### 
