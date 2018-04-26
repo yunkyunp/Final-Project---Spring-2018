@@ -34,10 +34,6 @@ HOMER guesses input format, but I used `-force bam`
 [HOMER: Creating a "Tag Directory" with makeTagDirectory](http://homer.ucsd.edu/homer/ngs/tagDir.html) 
 
 ```bash
-makeTagDirectory <Output Directory Name> [options] <alignment file1> [alignment file 2] ...
-```
-e.g.
-```bash
 makeTagDirectory H3K27AC_NoDox TBCBL-RTAdox-H3K27Ac_S1_L001_R1_001.bam TBCBL-RTAdox-H3K27Ac_S1_L002_R1_001.bam TBCBL-RTAdox-H3K27Ac_S1_L003_R1_001.bam TBCBL-RTAdox-H3K27Ac_S1_L004_R1_001.bam
 ```
 
@@ -49,9 +45,6 @@ This step will normalize to 10 million reads.
 
 [HOMER: Finding Enriched Peaks, Regions, and Transcripts](http://homer.ucsd.edu/homer/ngs/peaks.html) 
 
-```bash
-findPeaks <tag directory> -style <factor or histone> -o Sample_Peaks.txt -i <input tag directory>
-```
 e.g.
 ```bash
 findPeaks H3K27AC_NoDox -style histone -size 1000 -o H3K27Ac_NoDox_Peaks.txt -i 20180409_HHKVVBGX5_input_NoDox
@@ -66,10 +59,6 @@ Annotated peaks come in `.txt` file. Default settings are used, and use 'hg19' f
 
 [HOMER: Annotating Regions in the Genome (annotatePeaks.pl)](http://homer.ucsd.edu/homer/ngs/annotation.html)
 
-```bash
-annotatePeaks.pl Sample_Peaks.txt hg19 >Sample_Peaks_annotated.txt
-```
-e.g
 ```bash
 annotatePeaks.pl H3K27Ac_NoDox_Peaks.txt hg19 -d H3K27AC_NoDox >H3K27Ac_NoDox_Peaks_annotated.txt
 ```
@@ -87,9 +76,6 @@ Output: `H3K27Ac_NoDox_Peaks_noTSS.txt` It is the H3K27Ac binding sites for non-
 ### Anchor plot (Histograms of Tag Directories)
 
 ```bash
-annotatePeaks.pl ARpeaks.txt hg18 -size 4000 -hist 10 -d H3K4me2-control/ H3K4me2-dht-16h/ > outputfile.txt
-```
-```bash
 annotatePeaks.pl H3K27Ac_NoDox_Peaks_noTSS.txt hg19 -size 20000 -hist 10 -d H3K27AC_NoDox >H3K27Ac_NoDox_Peaks_20kb_annotated.txt
 ```
 20,000 = x-axis
@@ -101,7 +87,6 @@ H3K27Ac_NoDox is ChIP-seq for H3K27Ac in lymphoma cell line infected with latent
 
 # Visualization (R)
 ### Anchor plot 
-e.g.
 ```R
 #Read in anchorplot text files from Homer (annotatePeaks)
 H3K27AC_ND_noTSS_20kb <- read.delim("~/Documents/Data/BCBL_ChipSeq/Homer_Analysis/H3K27Ac_NoDox_noTSS_20kb_anchorplot.txt")
