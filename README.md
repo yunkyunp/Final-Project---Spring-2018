@@ -115,3 +115,5 @@ dev.off()
 ```
 Output: `H3K27ac_20kb_noTSS.png`
 
+![h3k27ac_20kb_notss](https://user-images.githubusercontent.com/35276847/39328606-b12d184e-4950-11e8-9667-a00a9565793a.png)
+
