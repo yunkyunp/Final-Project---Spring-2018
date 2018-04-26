@@ -36,6 +36,7 @@ HOMER guesses input format, but I used `-force bam`
 ```bash
 makeTagDirectory <Output Directory Name> [options] <alignment file1> [alignment file 2] ...
 ```
+e.g.
 ```bash
 makeTagDirectory H3K27AC_NoDox TBCBL-RTAdox-H3K27Ac_S1_L001_R1_001.bam TBCBL-RTAdox-H3K27Ac_S1_L002_R1_001.bam TBCBL-RTAdox-H3K27Ac_S1_L003_R1_001.bam TBCBL-RTAdox-H3K27Ac_S1_L004_R1_001.bam
 ```
@@ -51,6 +52,7 @@ This step will normalize to 10 million reads.
 ```bash
 findPeaks <tag directory> -style <factor or histone> -o Sample_Peaks.txt -i <input tag directory>
 ```
+e.g.
 ```bash
 findPeaks H3K27AC_NoDox -style histone -size 1000 -o H3K27Ac_NoDox_Peaks.txt -i 20180409_HHKVVBGX5_input_NoDox
 ```
@@ -67,14 +69,17 @@ Annotated peaks come in `.txt` file. Default settings are used, and use 'hg19' f
 ```bash
 annotatePeaks.pl Sample_Peaks.txt hg19 >Sample_Peaks_annotated.txt
 ```
+e.g
 ```bash
 annotatePeaks.pl H3K27Ac_NoDox_Peaks.txt hg19 -d H3K27AC_NoDox >H3K27Ac_NoDox_Peaks_annotated.txt
 ```
 
-Output: `H3K27Ac_NoDox_Peaks_annotated.txt` (take a screenshot of the .txt file)
+Output: `H3K27Ac_NoDox_Peaks_annotated.txt` 
 
 ### Using excel, we pulled out the promoter/TSS to only look at ChIP bindings in non-promoters (possibly enhancers)
 H3K27ac is enriched in both active promoters and enhancers. Identify active enhancers by taking out the `Promoter/TSS` from `H3K27Ac_NoDox_Peaks.txt` using the annotated file.
+
+![](./annotated.png)
 
 Output: `H3K27Ac_NoDox_Peaks_noTSS.txt` It is the H3K27Ac binding sites for non-TSS (potentially enhancers)
 
