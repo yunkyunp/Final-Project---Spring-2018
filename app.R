@@ -2,7 +2,7 @@ library(shiny)
 library(plotly)
 
 #Read in File
-LyticVSLatent_TMMNorm_1 <- read.delim("/Users/trgn510/Desktop/final_project/Final_shiny/LyticVSLatent_TMMNorm_1.txt")
+LyticVSLatent_TMMNorm_1 <- read.delim("/home/yunkyunp/www/shiny-server/finalproject/Final-Project---Spring-2018/LyticVSLatent_TMMNorm_1.txt")
 
 #Trim Data
 LyticVSLatent_TMMNorm_1 <- LyticVSLatent_TMMNorm_1[,-8]
