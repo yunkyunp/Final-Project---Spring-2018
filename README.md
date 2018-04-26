@@ -79,7 +79,8 @@ Output: `H3K27Ac_NoDox_Peaks_annotated.txt`
 ### Using excel, we pulled out the promoter/TSS to only look at ChIP bindings in non-promoters (possibly enhancers)
 H3K27ac is enriched in both active promoters and enhancers. Identify active enhancers by taking out the `Promoter/TSS` from `H3K27Ac_NoDox_Peaks.txt` using the annotated file.
 
-![](./annotated.png)
+![annotated](https://user-images.githubusercontent.com/35276847/39323241-e2dac3f6-4940-11e8-9e58-f0e5403950d2.png)
+
 
 Output: `H3K27Ac_NoDox_Peaks_noTSS.txt` It is the H3K27Ac binding sites for non-TSS (potentially enhancers)
 
