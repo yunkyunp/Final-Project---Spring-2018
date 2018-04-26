@@ -4,6 +4,9 @@
 
 This is a summary of my final project for TRGN510.
 
+![flowchart](https://user-images.githubusercontent.com/35276847/39332208-a0fd54ec-495b-11e8-83e3-3c44decd6a6f.png)
+
+
 The goal of my project is to use various ChIP-seq data to profile enhancers in a specific B-cell line, infected with a herpesvirus. I want to identify how the enhancer profile changes upon reactivation of this herpesvirus from latent to lytic state.
 
 H3K4me1 and H3K27ac are the predominant histone modifications deposited at nucleosomes flanking enhancer elements. I will be looking at H3K27ac ChIP-seq profiles during latent and lytic viral infection in B-cells.
