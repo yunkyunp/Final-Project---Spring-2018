@@ -29,22 +29,24 @@ Outputs from Partek Flow:
 
 2. `TBCBL-RTAdox-H3K27Ac_S1_L001_R1_001.bam, TBCBL-RTAdox-H3K27Ac_S1_L001_R1_002.bam, TBCBL-RTAdox-H3K27Ac_S1_L001_R1_003.bam, TBCBL-RTAdox-H3K27Ac_S1_L001_R1_004.bam` - Due to the sequencing platform that we used (NextSeq), each sample is divided into 4 different bam files. They will be combined into one in the downstream analysis in HOMER.
 
-# Analysis (Volcano plot - R Shiny using `LyticVSLatent_TMMNorm_1.txt`)
+# Analysis (Volcano plot - R Shiny)
+Input: `LyticVSLatent_TMMNorm_1.txt`
 Differential binding profile between latent vs lytic virus infection. The R shiny script `app.R` is uploaded onto github.
 
-[Click here to view URL](http://52.14.202.125:3838/yunkyunp/finalproject/Final-Project---Spring-2018/).
+Output: [Click here to view URL](http://52.14.202.125:3838/yunkyunp/finalproject/Final-Project---Spring-2018/)
 
 This interactive volcano plot compares H3K27Ac ChIP-seq data in lytic infection vs latent infection in B-cell lymphoma, showing binding sites on the entire genome (inter-genic, TSS, etc). 
 Following analysis (HOMER) is to look at the H3K27Ac marks on enhancers only (non-TSS sites). 
 
 
-# Analysis (HOMER using `TBCBL-RTAdox-H3K27Ac_S1_L001_R1_001.bam`)
+# Analysis (HOMER)
 
 ### Creating a "Tag Directory" 
 Tag directory is  platform independent sequence alignment representing the experiment, analogous to loading the data into a database.  It is essentially a directory on your computer that contains several files describing your experiment. 
 HOMER guesses input format, but I used `-force bam`
 
 [HOMER: Creating a "Tag Directory" with makeTagDirectory](http://homer.ucsd.edu/homer/ngs/tagDir.html) 
+Input: `TBCBL-RTAdox-H3K27Ac_S1_L001_R1_001.bam`
 
 ```bash
 makeTagDirectory H3K27AC_NoDox TBCBL-RTAdox-H3K27Ac_S1_L001_R1_001.bam TBCBL-RTAdox-H3K27Ac_S1_L002_R1_001.bam TBCBL-RTAdox-H3K27Ac_S1_L003_R1_001.bam TBCBL-RTAdox-H3K27Ac_S1_L004_R1_001.bam
@@ -114,4 +116,5 @@ dev.off()
 Output: `H3K27ac_20kb_noTSS.png`
 
 ![h3k27ac_20kb_notss](https://user-images.githubusercontent.com/35276847/39328606-b12d184e-4950-11e8-9667-a00a9565793a.png)
+
 This anchor plot shows the global level of H3K27Ac marks on enhancers only. The conclusion is that upon reactivation of herpesvirus(latent --> lytic) in B-cell lymphoma cell line, global enhancer activity (noted by H3K27Ac) decreases.
