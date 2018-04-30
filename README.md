@@ -4,10 +4,9 @@
 
 This is a summary of my final project for TRGN510.
 
-![flowchart](https://user-images.githubusercontent.com/35276847/39332208-a0fd54ec-495b-11e8-83e3-3c44decd6a6f.png)
+![screen shot 2018-04-30 at 4 16 16 pm](https://user-images.githubusercontent.com/35276847/39454735-de83d83e-4c91-11e8-99ae-9cf422080b1a.png)
 
-
-The goal of my project is to use various ChIP-seq data to profile enhancers in a specific B-cell line, infected with a herpesvirus. I want to identify how the enhancer profile changes upon reactivation of this herpesvirus from latent to lytic state.
+The goal of my project is to use various ChIP-seq data to profile enhancers in a specific B-cell line, infected with a herpesvirus. I want to identify how the enhancer profile changes upon reactivation of a herpesvirus from latent to lytic state in this cell line.
 
 H3K4me1 and H3K27ac are the predominant histone modifications deposited at nucleosomes flanking enhancer elements. I will be looking at H3K27ac ChIP-seq profiles during latent and lytic viral infection in B-cells.
 
@@ -24,11 +23,22 @@ H3K4me1 and H3K27ac are the predominant histone modifications deposited at nucle
 1. Trim bases on both ends and Pre-alignment QA/QC. 
 2. Align reads and Post-alignment QA/QC: used default settings and used Bowtie2 and aligned to hg19 (human genome)
 
-Output from Partek Flow: `TBCBL-RTAdox-H3K27Ac_S1_L001_R1_001.bam`
+Outputs from Partek Flow: 
+1. `LyticVSLatent_TMMNorm_1.txt` - Binding differentials between lytic and latent. 
+![screen shot 2018-04-30 at 4 24 07 pm](https://user-images.githubusercontent.com/35276847/39454951-f1733592-4c92-11e8-8d72-a7d1044097b7.png)
 
-Due to the sequencing platform that we used (NextSeq), each sample is divided into 4 different bam files. They will be combined into one in the next step.
+2. `TBCBL-RTAdox-H3K27Ac_S1_L001_R1_001.bam, TBCBL-RTAdox-H3K27Ac_S1_L001_R1_002.bam, TBCBL-RTAdox-H3K27Ac_S1_L001_R1_003.bam, TBCBL-RTAdox-H3K27Ac_S1_L001_R1_004.bam` - Due to the sequencing platform that we used (NextSeq), each sample is divided into 4 different bam files. They will be combined into one in the downstream analysis in HOMER.
 
-# Analysis (HOMER)
+# Analysis (Volcano plot - R Shiny using `LyticVSLatent_TMMNorm_1.txt`)
+Differential binding profile between latent vs lytic virus infection. The R shiny script `app.R` is uploaded onto github.
+
+[Click here to view URL](http://52.14.202.125:3838/yunkyunp/finalproject/Final-Project---Spring-2018/).
+
+This interactive volcano plot compares H3K27Ac ChIP-seq data in lytic infection vs latent infection in B-cell lymphoma, showing binding sites on the entire genome (inter-genic, TSS, etc). 
+Following analysis (HOMER) is to look at the H3K27Ac marks on enhancers only (non-TSS sites). 
+
+
+# Analysis (HOMER using `TBCBL-RTAdox-H3K27Ac_S1_L001_R1_001.bam`)
 
 ### Creating a "Tag Directory" 
 Tag directory is  platform independent sequence alignment representing the experiment, analogous to loading the data into a database.  It is essentially a directory on your computer that contains several files describing your experiment. 
@@ -104,4 +114,4 @@ dev.off()
 Output: `H3K27ac_20kb_noTSS.png`
 
 ![h3k27ac_20kb_notss](https://user-images.githubusercontent.com/35276847/39328606-b12d184e-4950-11e8-9667-a00a9565793a.png)
-
+This anchor plot shows the global level of H3K27Ac marks on enhancers only. The conclusion is that upon reactivation of herpesvirus(latent --> lytic) in B-cell lymphoma cell line, global enhancer activity (noted by H3K27Ac) decreases.
